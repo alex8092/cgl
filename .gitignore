@@ -31,7 +31,7 @@
 # Debug files
 *.dSYM/
 
-*.txt
+CMakeCache.txt
 Makefile
 *.cmake
 CMakeFiles/
