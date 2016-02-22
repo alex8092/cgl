@@ -1,5 +1,6 @@
 #include "engine/system.h"
 #include "gui/window.h"
+#include "gui/event_def.h"
 #include <memory.h>
 
 t_cgl_engine	*cgl_engine_system_instance(void)
@@ -34,6 +35,7 @@ int				cgl_engine_system_init(const char *title, uint32_t width, uint32_t height
 int				cgl_engine_system_run(int (*run_func)(t_cgl_engine *))
 {
 	static t_cgl_engine *engine = 0;
+	t_cgl_event			*ev = 0;
 
 	if (!engine)
 		engine = cgl_engine_system_instance();
@@ -41,13 +43,14 @@ int				cgl_engine_system_run(int (*run_func)(t_cgl_engine *))
 		return (-1);
 	while (1)
 	{
-		SDL_WaitEvent(&engine->win->ev);
-
-		if (engine->win->ev.type == SDL_QUIT)
+		while ((ev = cgl_gui_window_next_event(engine->win)))
+		{
+			if (ev->type == CGL_EVENT_CLOSE_WINDOW)
+				return (0);
+		}
+		if (run_func(engine) == 1)
 			return (0);
-		else if (run_func(engine) == 1)
-			return (0);
-		SDL_GL_SwapWindow(engine->win->handle);
+		cgl_gui_window_swap(engine->win);
 	}
 }
 

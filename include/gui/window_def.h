@@ -3,6 +3,7 @@
 
 # include <stdint.h>
 # include <SDL2/SDL.h>
+# include "gui/event_def.h"
 
 typedef struct 		s_cgl_window
 {
