@@ -17,8 +17,8 @@ t_cgl_window			*cgl_gui_window_create(const char *title, uint32_t width, uint32_
 	w->width = width;
 	w->height = height;
 	w->gl_major = 3;
-	w->gl_minor = 2;
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+	w->gl_minor = 0;
+	// SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, w->gl_major);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, w->gl_minor);
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);

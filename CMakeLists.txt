@@ -4,7 +4,7 @@ project(cgl)
 
 include_directories(include)
 
-set(CMAKE_C_FLAGS "-std=c11 -Wall -Wextra")
+set(CMAKE_C_FLAGS "-Wall -Wextra -g")
 
 file(
 	GLOB_RECURSE
